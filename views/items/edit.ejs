@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<section>
+  <h2>Editar Item</h2>
+  <form method="post" action="/items/<%= item._id %>?_method=PUT">
+    <label>Nombre: <input name="name" value="<%= item.name %>" required></label>
+    <label>Categoría:
+      <select name="category" required>
+        <option value="Silla" <%= item.category==='Silla'?'selected':'' %>>Silla</option>
+        <option value="Mesa" <%= item.category==='Mesa'?'selected':'' %>>Mesa</option>
+        <option value="Inflable" <%= item.category==='Inflable'?'selected':'' %>>Inflable</option>
+      </select>
+    </label>
+    <label>Descripción: <textarea name="description"><%= item.description %></textarea></label>
+    <label>Precio por día: <input name="pricePerDay" type="number" step="0.01" value="<%= item.pricePerDay %>" required></label>
+    <label>Stock: <input name="stock" type="number" value="<%= item.stock %>" required></label>
+    <button type="submit">Guardar</button>
+  </form>
+</section>
+<%- include('../partials/footer') %>

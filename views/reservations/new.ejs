@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<section>
+  <h2>Nueva Reservación</h2>
+  <form method="post" action="/reservations">
+    <label>Cliente: <input name="customerName" required></label>
+    <label>Ítem:
+      <select name="itemId" required>
+        <% items.forEach(i => { %>
+          <option value="<%= i._id %>"><%= i.name %> (stock: <%= i.stock %>)</option>
+        <% }) %>
+      </select>
+    </label>
+    <label>Cantidad: <input name="quantity" type="number" required min="1"></label>
+    <label>Desde: <input type="date" name="dateFrom" required></label>
+    <label>Hasta: <input type="date" name="dateTo" required></label>
+    <button type="submit">Reservar</button>
+  </form>
+</section>
+<%- include('../partials/footer') %>

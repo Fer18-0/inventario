@@ -1,0 +1,18 @@
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f5f7fb;color:#222}
+.container{max-width:1000px;margin:0 auto;padding:20px}
+.site-header{background:#1f6feb;color:white;padding:12px 0}
+.site-header a{color:white;text-decoration:none}
+.site-header nav{float:right}
+.site-header nav a{margin-left:12px;color:white}
+h1 a{color:white}
+.site-footer{background:#111;color:#ddd;padding:12px;margin-top:24px;text-align:center}
+.table{width:100%;border-collapse:collapse;margin-top:12px}
+.table th,.table td{border:1px solid #ddd;padding:8px;text-align:left}
+form label{display:block;margin:8px 0}
+input,select,textarea,button{padding:8px;width:100%;box-sizing:border-box}
+button{width:auto;cursor:pointer}
+.flash{padding:8px;margin-bottom:12px;border-radius:4px}
+.flash.success{background:#d4f7d9;color:#08421b}
+.flash.error{background:#ffd6d6;color:#5b0000}
+.search-form{display:flex;gap:8px}
+.search-form input{flex:1}

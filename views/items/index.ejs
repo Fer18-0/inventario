@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+<section>
+  <h2>Items</h2>
+  <form method="get" action="/items" class="search-form">
+    <input type="text" name="q" placeholder="Buscar..." value="<%= q %>">
+    <button type="submit">Buscar</button>
+  </form>
+  <table class="table">
+    <thead>
+      <tr><th>Nombre</th><th>Categoría</th><th>Precio/Día</th><th>Stock</th><th>Acciones</th></tr>
+    </thead>
+    <tbody>
+      <% items.forEach(item => { %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.category %></td>
+          <td>$<%= item.pricePerDay %></td>
+          <td><%= item.stock %></td>
+          <td>
+            <a href="/items/<%= item._id %>/edit">Editar</a>
+            <form method="post" action="/items/<%= item._id %>?_method=DELETE" style="display:inline">
+              <button type="submit" onclick="return confirm('Eliminar item?')">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+<%- include('../partials/footer') %>

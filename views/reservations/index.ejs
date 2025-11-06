@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<section>
+  <h2>Reservaciones</h2>
+  <table class="table">
+    <thead><tr><th>Cliente</th><th>Ítem</th><th>Cantidad</th><th>Desde</th><th>Hasta</th><th>Acciones</th></tr></thead>
+    <tbody>
+      <% reservations.forEach(r => { %>
+        <tr>
+          <td><%= r.customerName %></td>
+          <td><%= r.item ? r.item.name : '—' %></td>
+          <td><%= r.quantity %></td>
+          <td><%= r.dateFrom.toLocaleDateString() %></td>
+          <td><%= r.dateTo.toLocaleDateString() %></td>
+          <td>
+            <form method="post" action="/reservations/<%= r._id %>?_method=DELETE" style="display:inline">
+              <button type="submit" onclick="return confirm('Eliminar reservación?')">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+<%- include('../partials/footer') %>
