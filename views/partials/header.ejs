@@ -1,3 +1,4 @@
+<% if (user) { %>
 <!doctype html>
 <html>
 <head>
@@ -6,21 +7,30 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1><a href="/items">Inventario - Sillas, Mesas e Inflables</a></h1>
-      <nav>
-        <a href="/items">Items</a>
-        <a href="/reservations">Reservaciones</a>
-        <a href="/items/new">Agregar Item</a>
-        <a href="/reservations/new">Nueva Reservación</a>
-      </nav>
-    </div>
-  </header>
-  <main class="container">
-    <% if(success && success.length){ %>
-      <div class="flash success"><%= success %></div>
-    <% } %>
-    <% if(error && error.length){ %>
-      <div class="flash error"><%= error %></div>
-    <% } %>
+
+<header class="site-header">
+  <div class="container">
+    <h1><a href="/items">Inventario - Sillas, Mesas e Inflables</a></h1>
+
+    <nav>
+      <a href="/items">Items</a>
+      <a href="/reservations">Reservaciones</a>
+      <a href="/items/new">Agregar Item</a>
+      <a href="/reservations/new">Nueva Reservación</a>
+      <a href="/logout">Cerrar sesión</a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="container">
+
+  <% if (success && success.length) { %>
+    <div class="flash success"><%= success %></div>
+  <% } %>
+
+  <% if (error && error.length) { %>
+    <div class="flash error"><%= error %></div>
+  <% } %>
+
+<% } %>

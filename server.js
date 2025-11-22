@@ -24,6 +24,13 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(flash());
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null; 
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+});
+
 
 // Variables globales
 app.use((req, res, next) => {
@@ -32,11 +39,24 @@ app.use((req, res, next) => {
   next();
 });
 
+
 // Rutas
+const authRoutes = require('./routes/auth');
 const itemsRoutes = require('./routes/items');
 const reservationsRoutes = require('./routes/reservations');
-app.use('/items', itemsRoutes);
+
+app.use('/', authRoutes); // rutas de login
+app.use('/items', itemsRoutes); 
 app.use('/reservations', reservationsRoutes);
-app.get('/', (req, res) => res.redirect('/items'));
+
+app.get('/', (req, res) => {
+  if (!req.session.user) return res.redirect('/login');
+  res.redirect('/items');
+});
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
 
 app.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`));
